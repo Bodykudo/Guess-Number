@@ -81,7 +81,7 @@ document.querySelector(".check").addEventListener("click", function () {
 
 document.querySelector(".again").addEventListener("click", function () {
   changeStyle("body", "backgroundColor", "var(--background)");
-  changeStyle("body", "backgroundColor", "var(--background)");
+  changeStyle("html", "backgroundColor", "var(--background)");
   changeStyle(".message", "color", "inherit");
   number = Math.trunc(Math.random() * 20 + 1);
   score = 20;
