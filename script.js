@@ -98,11 +98,13 @@ document.querySelector(".dark").addEventListener("click", function () {
     darkMode = false;
     changeVariable("--background", "#eee");
     changeVariable("--text-color", "#222");
-    changeStyle(".dark", "background-image", `url("img/moon.png")`);
+    document.querySelector(".dark").classList.remove("fa-sun");
+    document.querySelector(".dark").classList.add("fa-moon");
   } else {
     darkMode = true;
     changeVariable("--background", "#222");
     changeVariable("--text-color", "#eee");
-    changeStyle(".dark", "background-image", `url("img/sun.png")`);
+    document.querySelector(".dark").classList.remove("fa-moon");
+    document.querySelector(".dark").classList.add("fa-sun");
   }
 });
