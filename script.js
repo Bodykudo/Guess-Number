@@ -81,13 +81,13 @@ document.querySelector(".check").addEventListener("click", function () {
 
 document.querySelector(".again").addEventListener("click", function () {
   changeStyle("body", "backgroundColor", "var(--background)");
-  changeStyle("html", "backgroundColor", "var(--background)");
+  changeStyle("body", "backgroundColor", "var(--background)");
   changeStyle(".message", "color", "inherit");
   number = Math.trunc(Math.random() * 20 + 1);
   score = 20;
   win = false;
   document.querySelector(".guess").disabled = false;
-  changeText(".message", "Start guessin...");
+  changeText(".message", "Start guessing...");
   changeText(".score", score);
   changeText(".display", "?");
   console.log(number);
