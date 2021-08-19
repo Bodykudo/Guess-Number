@@ -30,7 +30,7 @@ function changeVariable(varName, varValue) {
 
 document.querySelector(".check").addEventListener("click", function () {
   if (score > 0 && !win) {
-    let value = document.querySelector(".guess").value;
+    let value = Number(document.querySelector(".guess").value);
     if (value > 20 || value < 1 || Math.ceil(value) != value) {
       changeText(".message", "Invalid Number!");
       changeStyle(".message", "color", "#E4000F");
@@ -41,6 +41,7 @@ document.querySelector(".check").addEventListener("click", function () {
         changeText(".display", number);
         win = true;
         document.querySelector(".guess").disabled = true;
+        changeStyle("html", "backgroundColor", "#60B347");
         changeStyle("body", "backgroundColor", "#60B347");
 
         if (score > highScore) {
@@ -80,6 +81,7 @@ document.querySelector(".check").addEventListener("click", function () {
 
 document.querySelector(".again").addEventListener("click", function () {
   changeStyle("body", "backgroundColor", "var(--background)");
+  changeStyle("html", "backgroundColor", "var(--background)");
   changeStyle(".message", "color", "inherit");
   number = Math.trunc(Math.random() * 20 + 1);
   score = 20;
