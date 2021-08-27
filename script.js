@@ -3,10 +3,11 @@
 // Variables Declartion
 
 let number = Math.trunc(Math.random() * 20 + 1);
-let score = 20;
+let score = 10;
 let highScore = 0;
 let win = false;
 let darkMode = true;
+const enterdNumbers = new Set();
 
 console.log(number);
 
@@ -24,8 +25,6 @@ function changeVariable(varName, varValue) {
   document.querySelector(":root").style.setProperty(varName, varValue);
 }
 
-// Click Events
-
 // Check Event
 
 document.querySelector(".check").addEventListener("click", function () {
@@ -33,6 +32,9 @@ document.querySelector(".check").addEventListener("click", function () {
     let value = Number(document.querySelector(".guess").value);
     if (value > 20 || value < 1 || Math.ceil(value) != value) {
       changeText(".message", "Invalid Number!");
+      changeStyle(".message", "color", "#E4000F");
+    } else if (enterdNumbers.has(value)) {
+      changeText(".message", `You've already entered this number!`);
       changeStyle(".message", "color", "#E4000F");
     } else {
       changeStyle(".message", "color", "inherit");
@@ -49,8 +51,9 @@ document.querySelector(".check").addEventListener("click", function () {
           changeText(".highscore", highScore);
         }
       } else {
-        score = score - 1;
+        score--;
         changeText(".score", score);
+        enterdNumbers.add(value);
 
         if (score == 0) {
           changeText(".message", "GAME OVER");
@@ -84,13 +87,15 @@ document.querySelector(".again").addEventListener("click", function () {
   changeStyle("html", "backgroundColor", "var(--background)");
   changeStyle(".message", "color", "inherit");
   number = Math.trunc(Math.random() * 20 + 1);
-  score = 20;
+  score = 10;
   win = false;
+  enterdNumbers.clear();
   document.querySelector(".guess").disabled = false;
   changeText(".message", "Start guessing...");
   changeText(".score", score);
   changeText(".display", "?");
   console.log(number);
+  document.querySelector(".guess").value = "";
 });
 
 // Dark Mode Event
